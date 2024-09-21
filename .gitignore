@@ -1,0 +1,5 @@
+# VScode
+.vscode/*
+
+# General
+.DS_Store
