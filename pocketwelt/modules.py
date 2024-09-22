@@ -1,7 +1,7 @@
 import importlib
 from typing import Optional
 
-from .process import run_process
+from pocketwelt.processes import run_process
 
 
 def fetch_module(package: str, alias: Optional[str] = None) -> None:
