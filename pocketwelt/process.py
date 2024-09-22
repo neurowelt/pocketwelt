@@ -14,7 +14,6 @@ def run_process(command: str) -> str:
     Returns:
         str: Output of the executed command.
     """
-    
     result = subprocess.run(command.split(), capture_output=True, text=True)
     if result.stderr:
         raise subprocess.SubprocessError(result.stderr)
