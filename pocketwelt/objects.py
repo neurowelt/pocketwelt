@@ -1,6 +1,7 @@
+import hashlib
 import os
 import pickle
-from typing import Any
+from typing import Any, Optional, Union
 
 
 def save_pickle(obj: Any, path: str, replace: bool = False) -> None:
@@ -47,3 +48,27 @@ def load_pickle(path: str) -> Any:
         raise ValueError('Only pickle (.pkl) files are supported!')
     
     return pickle.load(open(path, 'rb'))
+
+def hash_file(file: Union[str, bytes], size: Optional[int] = None) -> str:
+    """
+    Hash file using SHA-256.
+
+    Args:
+        file (Union[str, bytes]): The file to hash. Can be either
+            a file path (str) or file content (bytes).
+        size (int, optional): The number of bytes to read from the file.
+            If `None`, reads the entire file. Defaults to `None`.
+
+    Returns:
+        str: The hexadecimal representation of the SHA-256 hash.
+
+    Raises:
+        AssertionError: If the filetype is neither str nor bytes.
+    """
+    assert isinstance(file, (str, bytes)), f"Invalid filetype - must be `str` or `bytes`, got {type(file)}."
+    
+    if isinstance(file, str):
+        with open(file, 'rb') as f:
+            file = f.read(size)
+    
+    return hashlib.sha256(file).hexdigest()
