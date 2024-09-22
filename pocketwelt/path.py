@@ -14,8 +14,10 @@ def get_parent_path(path: str, level: int = 1, absolute: bool = True) -> str:
         str: Parent path of the given path.
     """
     assert level >= 0, "`level` must be at least 0."
+    
     if absolute:
         path = os.path.abspath(path)
     if level > 0:
         return get_parent_path(os.path.dirname(path), level-1, False)
+    
     return path

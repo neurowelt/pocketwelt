@@ -1,13 +1,16 @@
 import importlib
+from typing import Optional
+
 from .process import run_process
 
 
-def fetch_module(package: str) -> None:
+def fetch_module(package: str, alias: Optional[str] = None) -> None:
     """
     Try importing a package and install it if it's not available.
 
     Args:
         package (str): Name of the package to import and potentially install.
+        alias (str): Alias for module used in code (e.g. `np` is an alias for `numpy`).
 
     Raises:
         ImportError: If the package cannot be imported after installation attempt.
@@ -25,4 +28,4 @@ def fetch_module(package: str) -> None:
     except (ImportError, ModuleNotFoundError):
         run_process(f"python -m pip install {package}")
     finally:
-        globals()[package] = importlib.import_module(package)
+        globals()[alias or package] = importlib.import_module(package)
