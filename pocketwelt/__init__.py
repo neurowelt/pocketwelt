@@ -15,10 +15,12 @@ __all__ = [
     "build_all_paths",
     "build_top_paths",
     "get_all_attributes",
-    "list_all_paths"
+    "list_all_paths",
+    "BaseConfig"
 ]
 
 _import_structure = {
+    "configs": ["BaseConfig"],
     "files": [
         "compress_file",
         "decompress_file"
@@ -42,6 +44,7 @@ _import_structure = {
 
 if TYPE_CHECKING:
     
+    from pocketwelt.configs import BaseConfig
     from pocketwelt.files import (
         compress_file,
         decompress_file
