@@ -16,7 +16,10 @@ __all__ = [
     "build_top_paths",
     "get_all_attributes",
     "list_all_paths",
-    "BaseConfig"
+    "stdout_to_logger",
+    "BaseConfig",
+    "CustomLogger",
+    "ColorFormatter"
 ]
 
 _import_structure = {
@@ -24,6 +27,11 @@ _import_structure = {
     "files": [
         "compress_file",
         "decompress_file"
+    ],
+    "logs": [
+        "stdout_to_logger",
+        "CustomLogger",
+        "ColorFormatter"
     ],
     "modules": ["fetch_module"],
     "objects": [
@@ -48,6 +56,11 @@ if TYPE_CHECKING:
     from pocketwelt.files import (
         compress_file,
         decompress_file
+    )
+    from pocketwelt.logs import (
+        stdout_to_logger,
+        CustomLogger,
+        ColorFormatter
     )
     from pocketwelt.modules import fetch_module
     from pocketwelt.objects import (
