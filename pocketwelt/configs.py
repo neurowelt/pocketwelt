@@ -53,7 +53,7 @@ class BaseConfig(SimpleNamespace):
             # Validate type & set attribute
             if _type and not isinstance(v, _type):
                 raise TypeError(
-                    f"`{k}` should be of type `{_type}`, but is of type`{type(v)}`."
+                    f"`{k}` should be of type `{_type.__name__}`, but is of type`{type(v).__name__}`."
                 )
             setattr(self, k, v)
             if k in _required:
