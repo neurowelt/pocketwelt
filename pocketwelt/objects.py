@@ -19,7 +19,9 @@ def save_pickle(obj: Any, path: str, replace: bool = False) -> None:
         ValueError: If given path does not containt .pkl extension.
     """
     if os.path.exists(path) and not replace:
-        print(f'{path} already exists - either use `replace=True` or rename/move the file.')
+        raise FileExistsError(
+            f'{path} already exists - either use `replace=True` or rename/move the file.'
+        )
     if not path.endswith('.pkl'):
         raise ValueError('Only pickle (.pkl) files are supported!')
     dir = os.path.dirname(path)
