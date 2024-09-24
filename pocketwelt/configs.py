@@ -32,6 +32,11 @@ class BaseConfig(SimpleNamespace):
             TypeError: If a provided keyword argument does not match the expected type.
             ValueError: If any required arguments are missing.
         """
+        # Very primitive way of disabling the direct construction
+        assert self.__class__.__base__ != SimpleNamespace, \
+            "BaseConfig cannot be initiated directly - can only be used for class inheritance."
+        
+        # Construct the config
         _required = self._get_empty_attrs()
         for k, v in kwargs.items():
             # Check if attribute exists, retrieve type
