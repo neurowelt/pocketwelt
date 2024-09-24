@@ -4,6 +4,8 @@ from typing import TYPE_CHECKING
 from pocketwelt.imports import LazyModule
 
 __all__ = [
+    "b64_decode",
+    "b64_encode",
     "compress_file",
     "decompress_file",
     "fetch_module",
@@ -24,6 +26,10 @@ __all__ = [
 
 _import_structure = {
     "configs": ["BaseConfig"],
+    "encodings": [
+        "b64_decode",
+        "b64_encode"
+    ],
     "files": [
         "compress_file",
         "decompress_file"
@@ -53,6 +59,10 @@ _import_structure = {
 if TYPE_CHECKING:
     
     from pocketwelt.configs import BaseConfig
+    from pocketwelt.encodings import (
+        b64_decode,
+        b64_encode
+    )
     from pocketwelt.files import (
         compress_file,
         decompress_file
