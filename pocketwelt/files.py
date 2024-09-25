@@ -26,7 +26,12 @@ def decompress_file(compressed_file_path: str) -> Any:
 
     Returns:
         Any: The decompressed and deserialized content of the file.
+            We first read the content and then try unpickling. If that fails
+            we simply decode the content from bytes.
     """
     with gzip.open(compressed_file_path, 'rb') as f_in:
-        return pickle.load(f_in)
-    
+        content = f_in.read()
+        try:
+            return pickle.loads(content)
+        except pickle.UnpicklingError:
+            return content.decode('utf-8')
