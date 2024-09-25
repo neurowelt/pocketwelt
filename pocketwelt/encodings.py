@@ -80,15 +80,15 @@ def b64_encode(obj: Any, type_or_header: str) -> str:
     else:
         enc_obj = base64.b64encode(bytes(obj))
 
-    return f"data:{mime_header};base64,{enc_obj}"
+    return f"data:{mime_header};base64,{enc_obj.decode('utf-8')}"
 
-def b64_decode(encoded_obj: str, fileobj: Optional[str] = None) -> Union[str, BytesIO]:
+def b64_decode(encoded_obj: str, filepath: Optional[str] = None) -> Union[str, BytesIO]:
     """
     Decode a base64 encoded string. 
 
     Args:
         encoded_obj (str): The base64 encoded string to decode.
-        fileobj (str, optional): The path to save the decoded content as a file.
+        filepath (str, optional): The path to save the decoded content as a file.
             If `None`, the decoded content is returned as a `BytesIO` object. Defaults to `None`.
 
     Raises:
@@ -114,17 +114,17 @@ def b64_decode(encoded_obj: str, fileobj: Optional[str] = None) -> Union[str, By
     decoded_obj = base64.b64decode(encoded_obj.split(",")[-1])
 
     # If not string, dump to binary buffer
-    if fileobj is None:
+    if filepath is None:
         return BytesIO(decoded_obj)
     
     # If string, treat as path
-    if isinstance(fileobj, str):
-        if os.path.exists(fileobj):
-            raise FileExistsError(f"{fileobj} is taken - interrupting decoding.")
-        _dir = os.path.dirname(fileobj)
+    if isinstance(filepath, str):
+        if os.path.exists(filepath):
+            raise FileExistsError(f"{filepath} is taken - interrupting decoding.")
+        _dir = os.path.dirname(filepath)
         if _dir != "":
             os.makedirs(_dir, exist_ok=True)
-        with open(fileobj, "wb") as f:
+        with open(filepath, "wb") as f:
             f.write(decoded_obj)
-        return os.path.abspath(fileobj)
+        return os.path.abspath(filepath)
     
