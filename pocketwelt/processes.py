@@ -17,5 +17,5 @@ def run_process(command: str) -> str:
     result = subprocess.run(command.split(), capture_output=True, text=True)
     if result.stderr:
         raise subprocess.SubprocessError(result.stderr)
-    
+
     return result.stdout

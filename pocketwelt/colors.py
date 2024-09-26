@@ -22,6 +22,7 @@ _ANSI_COLORS = {
     "bright_white": 97,
 }  # source: https://github.com/pallets/click/termui.py
 
+
 class RGBColor(tuple, Enum):
     RED = (255, 0, 0)
     CRIMSON = (220, 20, 60)
@@ -38,6 +39,7 @@ class RGBColor(tuple, Enum):
     CYAN = (0, 255, 255)
     YELLOW = (255, 255, 0)
 
+
 class click:
     """
     This class was made to simulate [`click`](https://github.com/pallets/click)
@@ -49,6 +51,7 @@ class click:
     However, if it is installed, do not worry - this class is only used in `logs.ColorFormatter`
     and is imported only when real `click` is not installed.
     """
+
     @classmethod
     def style(cls, text: str, fg: Union[int, RGBColor, str], **style_kwargs) -> str:
         """
@@ -71,6 +74,5 @@ class click:
             bits.insert(0, f"{38};2;{r:d};{g:d};{b:d}")
         else:
             bits.insert(0, str(_ANSI_COLORS[fg]))
-            
+
         return "".join(bits)
-    

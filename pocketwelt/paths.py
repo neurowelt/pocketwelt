@@ -15,13 +15,14 @@ def get_parent_path(path: str, level: int = 1, absolute: bool = True) -> str:
         str: Parent path of the given path.
     """
     assert level >= 0, "`level` must be at least 0."
-    
+
     if absolute:
         path = os.path.abspath(path)
     if level > 0:
-        return get_parent_path(os.path.dirname(path), level-1, False)
-    
+        return get_parent_path(os.path.dirname(path), level - 1, False)
+
     return path
+
 
 def list_all_paths(directory: str) -> List[str]:
     """
@@ -37,17 +38,21 @@ def list_all_paths(directory: str) -> List[str]:
     for root, dirs, files in os.walk(directory):
         for name in dirs + files:
             paths.append(os.path.join(root, name))
-            
+
     return paths
 
-def build_all_paths(structure: Dict[str, Any], current_path: Optional[list] = None,
-                    result: Optional[dict] = None) -> Dict[str, Any]:
+
+def build_all_paths(
+    structure: Dict[str, Any],
+    current_path: Optional[list] = None,
+    result: Optional[dict] = None,
+) -> Dict[str, Any]:
     """
     Recursively build a dictionary of all paths from a nested dictionary.
 
     Args:
         structure (Dict[str, Any]): The nested dictionary structure to process.
-        current_path (Optional[list], optional): The current path being processed. 
+        current_path (Optional[list], optional): The current path being processed.
             Defaults to `None`.
         result (Optional[dict], optional): The dictionary to store the results.
             Defaults to `None`.
@@ -70,7 +75,10 @@ def build_all_paths(structure: Dict[str, Any], current_path: Optional[list] = No
 
     return result
 
-def build_top_paths(structure: Dict[str, Any], current_path: Optional[str] = None) -> List[str]:
+
+def build_top_paths(
+    structure: Dict[str, Any], current_path: Optional[str] = None
+) -> List[str]:
     """
     Recursively build a list of all possible paths for a given nested dictionary.
 
@@ -97,7 +105,10 @@ def build_top_paths(structure: Dict[str, Any], current_path: Optional[str] = Non
 
     return paths
 
-def get_all_attributes(structure: Dict[str, Any], attrs: Optional[List[str]] = None) -> List[str]:
+
+def get_all_attributes(
+    structure: Dict[str, Any], attrs: Optional[List[str]] = None
+) -> List[str]:
     """
     Recursively retrieve all names that exist in the nested dictionary.
 

@@ -17,4 +17,3 @@ def test_file_compression() -> None:
 
     os.remove("tests/file.txt")
     os.remove(zip_path)
-    

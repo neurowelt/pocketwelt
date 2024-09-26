@@ -17,7 +17,7 @@ def test_pickle_ops() -> None:
         "set": {1, 2, 3},
         "dictionary": {"key1": "value1", "key2": "value2"},
         "none": None,
-        "bytes": b"binary data"
+        "bytes": b"binary data",
     }
 
     # Saving a pickle

@@ -20,15 +20,16 @@ def save_pickle(obj: Any, path: str, replace: bool = False) -> None:
     """
     if os.path.exists(path) and not replace:
         raise FileExistsError(
-            f'{path} already exists - either use `replace=True` or rename/move the file.'
+            f"{path} already exists - either use `replace=True` or rename/move the file."
         )
-    if not path.endswith('.pkl'):
-        raise ValueError('Only pickle (.pkl) files are supported!')
+    if not path.endswith(".pkl"):
+        raise ValueError("Only pickle (.pkl) files are supported!")
     dir = os.path.dirname(path)
-    if dir != '':
+    if dir != "":
         os.makedirs(dir, exist_ok=True)
-    with open(path, 'wb') as f:
+    with open(path, "wb") as f:
         pickle.dump(obj, f)
+
 
 def load_pickle(path: str) -> Any:
     """
@@ -45,11 +46,12 @@ def load_pickle(path: str) -> Any:
         Any: Deserialized Python object loaded from the file.
     """
     if not os.path.exists(path):
-        raise FileNotFoundError(f'{path} does not exist!')
-    if not path.endswith('.pkl'):
-        raise ValueError('Only pickle (.pkl) files are supported!')
-    
-    return pickle.load(open(path, 'rb'))
+        raise FileNotFoundError(f"{path} does not exist!")
+    if not path.endswith(".pkl"):
+        raise ValueError("Only pickle (.pkl) files are supported!")
+
+    return pickle.load(open(path, "rb"))
+
 
 def hash_file(file: Union[str, bytes], size: Optional[int] = None) -> str:
     """
@@ -67,10 +69,12 @@ def hash_file(file: Union[str, bytes], size: Optional[int] = None) -> str:
     Raises:
         AssertionError: If the filetype is neither str nor bytes.
     """
-    assert isinstance(file, (str, bytes)), f"Invalid filetype - must be `str` or `bytes`, got {type(file)}."
-    
+    assert isinstance(
+        file, (str, bytes)
+    ), f"Invalid filetype - must be `str` or `bytes`, got {type(file)}."
+
     if isinstance(file, str):
-        with open(file, 'rb') as f:
+        with open(file, "rb") as f:
             file = f.read(size)
-    
+
     return hashlib.sha256(file).hexdigest()

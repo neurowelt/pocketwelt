@@ -20,6 +20,7 @@ class BaseConfig(SimpleNamespace):
         print(example_config.use_ssl)  # Output: False
         ```
     """
+
     def __init__(self, **kwargs: Any) -> None:
         """
         Initialize the BaseConfig instance.
@@ -33,9 +34,10 @@ class BaseConfig(SimpleNamespace):
             ValueError: If any required arguments are missing.
         """
         # Very primitive way of disabling the direct construction
-        assert self.__class__.__base__ != SimpleNamespace, \
-            "BaseConfig cannot be initiated directly - can only be used for class inheritance."
-        
+        assert (
+            self.__class__.__base__ != SimpleNamespace
+        ), "BaseConfig cannot be initiated directly - can only be used for class inheritance."
+
         # Construct the config
         _required = self._get_empty_attrs()
         for k, v in kwargs.items():
@@ -45,9 +47,9 @@ class BaseConfig(SimpleNamespace):
                     f"`{self.__class__.__name__}` does not contain config variable named `{k}`."
                 )
             _type = self.__annotations__.get(k, None)
-            
+
             # Check generic type origin to avoid TypeError
-            if hasattr(_type, '__origin__'):
+            if hasattr(_type, "__origin__"):
                 _type = get_origin(_type)
 
             # Validate type & set attribute
@@ -75,7 +77,7 @@ class BaseConfig(SimpleNamespace):
         for attr in self.__annotations__:
             if not hasattr(self, attr):
                 _empty_attrs.append(attr)
-        
+
         return _empty_attrs
 
     def to_dict(self) -> Dict[str, Any]:
@@ -90,7 +92,7 @@ class BaseConfig(SimpleNamespace):
             _dict[attr] = getattr(self, attr, None)
 
         return _dict
-    
+
     def to_txt(self, save_path: str) -> None:
         """
         Save the current config to a text file.
@@ -98,6 +100,6 @@ class BaseConfig(SimpleNamespace):
         Args:
             save_path (str): Path where the configuration text file will be saved.
         """
-        with open(save_path, 'w+') as f:
+        with open(save_path, "w+") as f:
             for k, v in self.to_dict().items():
                 f.write(f"{k}: {v}\n")

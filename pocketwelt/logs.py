@@ -11,13 +11,16 @@ from pocketwelt.colors import RGBColor
 try:
     import click
 except ImportError:
-    print("Package called `click` has not been found."
-          "Importing replacement class from `pocketwelt.colors`")
+    print(
+        "Package called `click` has not been found."
+        "Importing replacement class from `pocketwelt.colors`"
+    )
     from pocketwelt.colors import click
 
 
 DATETIME_FMT = "%Y-%m-%d %H:%M:%S"
 LOG_FMT = "%(asctime)s  %(levelname)-8s %(filename)s:%(lineno)d >>  %(message)s"
+
 
 class ColorFormatter(logging.Formatter):
     """
@@ -26,6 +29,7 @@ class ColorFormatter(logging.Formatter):
     Adapted from:
     * https://github.com/encode/uvicorn/blob/master/uvicorn/logging.py
     """
+
     level_name_colors = {
         logging.DEBUG: lambda msg: click.style(str(msg), fg=RGBColor.TEAL),
         logging.INFO: lambda msg: click.style(str(msg), fg=RGBColor.GREEN),
@@ -34,8 +38,13 @@ class ColorFormatter(logging.Formatter):
         logging.CRITICAL: lambda msg: click.style(str(msg), fg=RGBColor.RED),
     }
 
-    def __init__(self, fmt: Optional[str] = LOG_FMT, datefmt: Optional[str] = DATETIME_FMT,
-                 style: Literal["%", "{", "$"] ='%', use_colors: bool = True) -> None:
+    def __init__(
+        self,
+        fmt: Optional[str] = LOG_FMT,
+        datefmt: Optional[str] = DATETIME_FMT,
+        style: Literal["%", "{", "$"] = "%",
+        use_colors: bool = True,
+    ) -> None:
         """
         Initialize the ColorFormatter.
 
@@ -60,8 +69,7 @@ class ColorFormatter(logging.Formatter):
             str: The colored log message.
         """
         coloring_func = self.level_name_colors.get(
-            level_no,
-            lambda msg: click.style(str(msg), fg=RGBColor.GREEN)
+            level_no, lambda msg: click.style(str(msg), fg=RGBColor.GREEN)
         )
 
         return coloring_func(msg)
@@ -79,15 +87,24 @@ class ColorFormatter(logging.Formatter):
         s = super().format(record)
         if self.use_colors:
             s = self.color_message(record.levelno, s)
-        
+
         return s
-        
+
+
 class CustomLogger(logging.Logger):
     """
     Custom Logger class accepting formatter objects and adding file logging option.
     """
-    def __init__(self, name: str, level: Union[str, int], formatter: Optional[logging.Formatter] = None,
-                 log_directory: Optional[str] = None, use_colors: bool = True, **fmt_kwargs: Any) -> None:
+
+    def __init__(
+        self,
+        name: str,
+        level: Union[str, int],
+        formatter: Optional[logging.Formatter] = None,
+        log_directory: Optional[str] = None,
+        use_colors: bool = True,
+        **fmt_kwargs: Any,
+    ) -> None:
         """
         Initialize the custom logger class which accepts `ColorFormatter` and log file to
         dump your logs to.
@@ -107,8 +124,8 @@ class CustomLogger(logging.Logger):
         # Prepare formatter
         formatter = formatter or ColorFormatter(
             use_colors=use_colors,
-            fmt=fmt_kwargs.get('fmt', LOG_FMT),
-            datefmt=fmt_kwargs.get('datefmt', DATETIME_FMT)
+            fmt=fmt_kwargs.get("fmt", LOG_FMT),
+            datefmt=fmt_kwargs.get("datefmt", DATETIME_FMT),
         )
         handler = logging.StreamHandler()
         handler.setLevel(level)
@@ -118,17 +135,23 @@ class CustomLogger(logging.Logger):
         # Create file logging
         if log_directory is not None:
             os.makedirs(log_directory, exist_ok=True)
-            log_name = "log" + f"_{name.lower()}_" + datetime.now().strftime("%Y-%m-%d_%H%M") + ".txt"
+            log_name = (
+                "log"
+                + f"_{name.lower()}_"
+                + datetime.now().strftime("%Y-%m-%d_%H%M")
+                + ".txt"
+            )
             log_path = os.path.join(log_directory, log_name)
             handler = logging.FileHandler(log_path, mode="a")
             handler.setLevel(level)
-            
+
             # Create non-colored formatter for file logs
             if hasattr(formatter, "use_colors"):
                 file_formatter = copy.copy(formatter)
                 setattr(file_formatter, "use_colors", False)
             handler.setFormatter(file_formatter)
             self.addHandler(handler)
+
 
 def stdout_to_logger(logger: logging.Logger, func: Callable, *args) -> str:
     """
@@ -147,7 +170,7 @@ def stdout_to_logger(logger: logging.Logger, func: Callable, *args) -> str:
     f = StringIO()
     with redirect_stdout(f):
         res = func(*args)
-    
+
     o = f.getvalue()
     for line in o.splitlines():
         logger.info(line)

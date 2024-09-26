@@ -5,22 +5,23 @@ from typing import Any, Optional, Union
 
 
 MIME_HEADERS = {
-    "png" : "image/png",
-    "jpg" : "image/jpeg",
-    "jpeg" : "image/jpeg",
-    "html" : "text/html",
-    "glb" : "text/plain",
-    "text" : "text/plain",
-    "wav" : "audio/wav",
-    "mp3" : "audio/mpeg",
-    "webm" : "audio/webm",
-    "mp4" : "video/mp4",
-    "mkv" : "video/x-matroska",
-    "avi" : "video/x-msvideo",
-    "zip" : "application/zip",
-    "md"  : "text/markdown",
-    "pdf" : "application/pdf"
+    "png": "image/png",
+    "jpg": "image/jpeg",
+    "jpeg": "image/jpeg",
+    "html": "text/html",
+    "glb": "text/plain",
+    "text": "text/plain",
+    "wav": "audio/wav",
+    "mp3": "audio/mpeg",
+    "webm": "audio/webm",
+    "mp4": "video/mp4",
+    "mkv": "video/x-matroska",
+    "avi": "video/x-msvideo",
+    "zip": "application/zip",
+    "md": "text/markdown",
+    "pdf": "application/pdf",
 }
+
 
 def b64_encode(obj: Any, type_or_header: str) -> str:
     """
@@ -47,13 +48,14 @@ def b64_encode(obj: Any, type_or_header: str) -> str:
         'data:application/octet-stream;base64,YmluYXJ5IGRhdGE='
     """
     # First extract proper header
-    if (
-        "/" not in type_or_header and
-        type_or_header not in MIME_HEADERS
-    ):
-        raise ValueError(f"{type_or_header} not supported. Either pass proper header"
-                         " or use provided headers (see `encodings.MIME_HEADERS`).")
-    mime_header = type_or_header if "/" in type_or_header else MIME_HEADERS.get(type_or_header)
+    if "/" not in type_or_header and type_or_header not in MIME_HEADERS:
+        raise ValueError(
+            f"{type_or_header} not supported. Either pass proper header"
+            " or use provided headers (see `encodings.MIME_HEADERS`)."
+        )
+    mime_header = (
+        type_or_header if "/" in type_or_header else MIME_HEADERS.get(type_or_header)
+    )
 
     # For strings either enocde file content or text
     if isinstance(obj, str):
@@ -61,30 +63,31 @@ def b64_encode(obj: Any, type_or_header: str) -> str:
             with open(obj, "rb") as file:
                 enc_obj = base64.b64encode(file.read())
         else:
-            enc_obj = base64.b64encode(obj.encode('utf-8'))
-    
+            enc_obj = base64.b64encode(obj.encode("utf-8"))
+
     # For buffers encode their value
     elif isinstance(obj, (BytesIO, StringIO)):
         obj.seek(0)  # make sure we read from the start
         if isinstance(obj, BytesIO):
             enc_obj = base64.b64encode(obj.getvalue())
         else:
-            enc_obj = base64.b64encode(obj.getvalue().encode('utf-8'))
+            enc_obj = base64.b64encode(obj.getvalue().encode("utf-8"))
         obj.seek(0)  # return to starting position
-    
+
     # For bytes simply encode them
     elif isinstance(obj, bytes):
         enc_obj = base64.b64encode(obj)
-    
+
     # Anything else try casting to bytes and encoding
     else:
         enc_obj = base64.b64encode(bytes(obj))
 
     return f"data:{mime_header};base64,{enc_obj.decode('utf-8')}"
 
+
 def b64_decode(encoded_obj: str, filepath: Optional[str] = None) -> Union[str, BytesIO]:
     """
-    Decode a base64 encoded string. 
+    Decode a base64 encoded string.
 
     Args:
         encoded_obj (str): The base64 encoded string to decode.
@@ -109,14 +112,14 @@ def b64_decode(encoded_obj: str, filepath: Optional[str] = None) -> Union[str, B
         ...     print(f.read())
         hello
     """
-    
+
     # Decode object
     decoded_obj = base64.b64decode(encoded_obj.split(",")[-1])
 
     # If not string, dump to binary buffer
     if filepath is None:
         return BytesIO(decoded_obj)
-    
+
     # If string, treat as path
     if isinstance(filepath, str):
         if os.path.exists(filepath):
@@ -127,4 +130,3 @@ def b64_decode(encoded_obj: str, filepath: Optional[str] = None) -> Union[str, B
         with open(filepath, "wb") as f:
             f.write(decoded_obj)
         return os.path.abspath(filepath)
-    

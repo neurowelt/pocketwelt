@@ -17,7 +17,7 @@ def test_b64_encodings() -> None:
     # String
     encoded_obj = b64_encode("string data", "text")
     decoded_obj = b64_decode(encoded_obj)
-    assert decoded_obj.getvalue().decode('utf-8') == "string data"  # type: ignore
+    assert decoded_obj.getvalue().decode("utf-8") == "string data"  # type: ignore
 
     # Image
     image = Image.open("tests/test_image.png")

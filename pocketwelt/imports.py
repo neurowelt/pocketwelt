@@ -17,6 +17,7 @@ def is_package_available(name: str) -> bool:
     """
     return find_spec(name) is not None
 
+
 class LazyModule(ModuleType):
     """
     Module for lazy importing.
@@ -25,7 +26,10 @@ class LazyModule(ModuleType):
     * https://github.com/optuna/optuna/blob/master/optuna/integration/__init__.py
     * https://github.com/huggingface/diffusers/blob/main/src/diffusers/utils/import_utils.py
     """
-    def __init__(self, module_name: str, module_file: str, import_structure: Dict[str, List[str]]):
+
+    def __init__(
+        self, module_name: str, module_file: str, import_structure: Dict[str, List[str]]
+    ):
         """
         Initialize a LazyModule instance.
 
@@ -71,7 +75,7 @@ class LazyModule(ModuleType):
         setattr(self, name, value)
 
         return value
-    
+
     def _get_module(self, module_name: str):
         """
         Import the given module.
@@ -91,10 +95,9 @@ class LazyModule(ModuleType):
             raise RuntimeError(
                 f"Failed to import {self.__name__}.{module_name} because of the following error:\n\n{e}"
             ) from e
-        
+
     def __reduce__(self):
         """
         This method is used to ensure that the LazyModule objectcan be pickled and unpickled correctly.
         """
         return (self.__class__, (self.__name__, self.__file__, self._import_structure))
-    
