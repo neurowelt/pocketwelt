@@ -26,7 +26,7 @@ def save_pickle(obj: Any, path: str, replace: bool = False) -> None:
         raise ValueError('Only pickle (.pkl) files are supported!')
     dir = os.path.dirname(path)
     if dir != '':
-        os.makedirs(dir)
+        os.makedirs(dir, exist_ok=True)
     with open(path, 'wb') as f:
         pickle.dump(obj, f)
 
