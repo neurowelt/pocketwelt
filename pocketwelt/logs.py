@@ -99,7 +99,7 @@ class CustomLogger(logging.Logger):
     def __init__(
         self,
         name: str,
-        level: Union[str, int],
+        level: Union[str, int] = logging.WARNING,
         formatter: Optional[logging.Formatter] = None,
         log_directory: Optional[str] = None,
         use_colors: bool = True,
@@ -152,6 +152,18 @@ class CustomLogger(logging.Logger):
             handler.setFormatter(file_formatter)
             self.addHandler(handler)
 
+    def setLevel(self, level: Union[str, int]) -> None:
+        """
+        Set the logging level for this logger and all its handlers.
+
+        Args:
+            level (Union[str, int]): The logging level to set. Can be a string
+                (e.g., 'INFO', 'DEBUG') or an integer representing the level.
+        """
+        super().setLevel(level)
+        for handler in self.handlers:
+            handler.setLevel(level)
+
 
 def stdout_to_logger(logger: logging.Logger, func: Callable, *args) -> str:
     """
@@ -176,3 +188,33 @@ def stdout_to_logger(logger: logging.Logger, func: Callable, *args) -> str:
         logger.info(line)
 
     return res
+
+
+# method name follows logging.py convention
+def getCustomLogger(
+    name: str, level: Union[str, int] = logging.WARNING
+) -> CustomLogger:
+    """
+    Create custom logger instance.
+
+    Args:
+        name (str): Name of the logger.
+        level (Union[str, int], optional): The logging level for the logger.
+            Can be a string (e.g., 'INFO', 'DEBUG') or an integer. Defaults to logging.WARNING.
+
+    Returns:
+        CustomLogger:
+            Instance of the `CustomLogger`.
+
+    Note:
+        This method temporarily replaces base class for loggers. We do this because
+        we do not want to multiply the `Manager` object created initially in logging.py.
+        Instead we use this object to create loggers with our custom class - logger hierarchy
+        is intact and we get our colorful logs this way.
+    """
+    logging.Logger.manager.setLoggerClass(CustomLogger)
+    _logger = logging.Logger.manager.getLogger(name)
+    _logger.setLevel(level)
+    logging.Logger.manager.setLoggerClass(logging.Logger)
+
+    return _logger  # type: ignore
