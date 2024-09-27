@@ -1,3 +1,10 @@
+# Development
+dist/*
+
+# Python
+__pycache__/*
+*.py[cod]
+
 # VScode
 .vscode/*
 
