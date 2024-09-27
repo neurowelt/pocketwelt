@@ -5,16 +5,6 @@ Welcome to the official documentation of the `pocketwelt` package - a Python pow
 ```{eval-rst}
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
-   colors
-   configs
-   encodings
-   files
-   imports
-   logs
-   modules
-   objects
-   paths
-   processes
+   modules/index
 ```
