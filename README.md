@@ -14,7 +14,7 @@ Worth noting - package uses only built-in Python libraries. My purpose is to kee
 
 ## Installation
 
-`pocketwelt` is available on [PyPi](...) and you can install it via pip:
+`pocketwelt` is available on [PyPi](https://pypi.org/project/pocketwelt/) and you can install it via pip:
 
 ```bash
 pip install pocketwelt
