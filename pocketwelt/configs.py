@@ -7,18 +7,18 @@ class BaseConfig(SimpleNamespace):
     Simple configuration class designed to work as pydantic BaseModel.
 
     Example:
-        ```python
-        class ExampleConfig(BaseConfig):
-            host: str
-            port: int
-            use_ssl: bool = False
+        .. code-block:: python
+        
+            class ExampleConfig(BaseConfig):
+                host: str
+                port: int
+                use_ssl: bool = False
 
-        # Example usage
-        example_config = ExampleConfig(host="localhost", port=8080)
-        print(example_config.host)  # Output: localhost
-        print(example_config.port)  # Output: 8080
-        print(example_config.use_ssl)  # Output: False
-        ```
+            # Example usage
+            example_config = ExampleConfig(host="localhost", port=8080)
+            print(example_config.host)  # Output: localhost
+            print(example_config.port)  # Output: 8080
+            print(example_config.use_ssl)  # Output: False
     """
 
     def __init__(self, **kwargs: Any) -> None:
