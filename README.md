@@ -4,7 +4,7 @@ Python powertool in your pocket :hammer:
 
 ## Introduction
 
-`pocketwelt` purpose is to provide some basic tools for Python projects.
+`pocketwelt` purpose is to provide basic tools for Python projects.
 
 Idea for this package came from my personal experience of repeating certain methods over and over again - quite simple, but yet too complex to keep them in my memory at all times.
 

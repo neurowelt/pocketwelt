@@ -8,7 +8,7 @@ class BaseConfig(SimpleNamespace):
 
     Example:
         .. code-block:: python
-        
+
             class ExampleConfig(BaseConfig):
                 host: str
                 port: int

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>imports &#8212; pocketwelt 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=def86cc0" />
+    
+    <script src="_static/documentation_options.js?v=01f34227"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="logs" href="logs.html" />
+    <link rel="prev" title="files" href="files.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="logs.html" title="logs"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="files.html" title="files"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pocketwelt 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="docutils literal notranslate"><span class="pre">imports</span></code></a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="imports">
+<h1><code class="docutils literal notranslate"><span class="pre">imports</span></code><a class="headerlink" href="#imports" title="Link to this heading">¶</a></h1>
+<p>This module contains <code class="docutils literal notranslate"><span class="pre">LazyModule</span></code> class for lazy importing of modules and a simple package availability check.</p>
+<p>It is not intended for regular importing, as it works as the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> namespace resident - it can be assigned to <code class="docutils literal notranslate"><span class="pre">sys.modules[__name__]</span></code> in order to perform lazy loading of modules by passing just the import structure instead of imported models.</p>
+<p>For example implementation, check out <a class="reference external" href="https://github.com/neurowelt/pocketwelt/blob/main/pocketwelt/__init__.py">the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> script of this package</a>!</p>
+<section id="lazymodule">
+<h2><code class="docutils literal notranslate"><span class="pre">LazyModule</span></code><a class="headerlink" href="#lazymodule" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pocketwelt.imports.LazyModule">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pocketwelt.imports.</span></span><span class="sig-name descname"><span class="pre">LazyModule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">import_structure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pocketwelt.imports.LazyModule" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModuleType</span></code></p>
+<p>Module for lazy importing.</p>
+<dl class="simple">
+<dt>Heavily based on:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/optuna/optuna/blob/master/optuna/integration/__init__.py">https://github.com/optuna/optuna/blob/master/optuna/integration/__init__.py</a></p></li>
+<li><p><a class="reference external" href="https://github.com/huggingface/diffusers/blob/main/src/diffusers/utils/import_utils.py">https://github.com/huggingface/diffusers/blob/main/src/diffusers/utils/import_utils.py</a></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="is-package-available">
+<h2><code class="docutils literal notranslate"><span class="pre">is_package_available</span></code><a class="headerlink" href="#is-package-available" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pocketwelt.imports.is_package_available">
+<span class="sig-prename descclassname"><span class="pre">pocketwelt.imports.</span></span><span class="sig-name descname"><span class="pre">is_package_available</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pocketwelt.imports.is_package_available" title="Link to this definition">¶</a></dt>
+<dd><p>Use to check for installation of a package. Finding path of the package
+does not import it, thus we can notify the user if some packages are missing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – Name of the package to check.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">imports</span></code></a><ul>
+<li><a class="reference internal" href="#lazymodule"><code class="docutils literal notranslate"><span class="pre">LazyModule</span></code></a><ul>
+<li><a class="reference internal" href="#pocketwelt.imports.LazyModule"><code class="docutils literal notranslate"><span class="pre">LazyModule</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#is-package-available"><code class="docutils literal notranslate"><span class="pre">is_package_available</span></code></a><ul>
+<li><a class="reference internal" href="#pocketwelt.imports.is_package_available"><code class="docutils literal notranslate"><span class="pre">is_package_available()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="files.html"
+                          title="previous chapter"><code class="docutils literal notranslate"><span class="pre">files</span></code></a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="logs.html"
+                          title="next chapter"><code class="docutils literal notranslate"><span class="pre">logs</span></code></a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/imports.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="logs.html" title="logs"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="files.html" title="files"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pocketwelt 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="docutils literal notranslate"><span class="pre">imports</span></code></a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024, neurowelt.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    </div>
+  </body>
+</html>

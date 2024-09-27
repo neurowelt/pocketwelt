@@ -15,7 +15,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Configs Module" href="configs.html" /> 
+    <link rel="next" title="colors" href="colors.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
@@ -24,7 +24,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="configs.html" title="Configs Module"
+          <a href="colors.html" title="colors"
              accesskey="N">next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">pocketwelt 0.1.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><code class="docutils literal notranslate"><span class="pre">pocketwelt</span></code> documentation</a></li> 
@@ -38,11 +38,64 @@
             
   <section id="pocketwelt-documentation">
 <h1><code class="docutils literal notranslate"><span class="pre">pocketwelt</span></code> documentation<a class="headerlink" href="#pocketwelt-documentation" title="Link to this heading">¶</a></h1>
+<p>Welcome to the official documentation of the <code class="docutils literal notranslate"><span class="pre">pocketwelt</span></code> package - a Python powertool in your (computer’s) pocket!</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="configs.html">Configs Module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="configs.html#baseconfig">BaseConfig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colors.html"><code class="docutils literal notranslate"><span class="pre">colors</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="colors.html#click"><code class="docutils literal notranslate"><span class="pre">click</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="colors.html#ansi-colors"><code class="docutils literal notranslate"><span class="pre">_ANSI_COLORS</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="colors.html#rgbcolor"><code class="docutils literal notranslate"><span class="pre">RGBColor</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configs.html"><code class="docutils literal notranslate"><span class="pre">configs</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configs.html#baseconfig"><code class="docutils literal notranslate"><span class="pre">BaseConfig</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="encodings.html"><code class="docutils literal notranslate"><span class="pre">encodings</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="encodings.html#b64-encode"><code class="docutils literal notranslate"><span class="pre">b64_encode</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="encodings.html#b64-decode"><code class="docutils literal notranslate"><span class="pre">b64_decode</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="encodings.html#mime-headers"><code class="docutils literal notranslate"><span class="pre">MIME_HEADERS</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="files.html"><code class="docutils literal notranslate"><span class="pre">files</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="files.html#compress-file"><code class="docutils literal notranslate"><span class="pre">compress_file</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="files.html#decompress-file"><code class="docutils literal notranslate"><span class="pre">decompress_file</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="imports.html"><code class="docutils literal notranslate"><span class="pre">imports</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imports.html#lazymodule"><code class="docutils literal notranslate"><span class="pre">LazyModule</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="imports.html#is-package-available"><code class="docutils literal notranslate"><span class="pre">is_package_available</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html"><code class="docutils literal notranslate"><span class="pre">logs</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="logs.html#colorformatter"><code class="docutils literal notranslate"><span class="pre">ColorFormatter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="logs.html#customlogger"><code class="docutils literal notranslate"><span class="pre">CustomLogger</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="logs.html#stdout-to-logger"><code class="docutils literal notranslate"><span class="pre">stdout_to_logger</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="logs.html#datetime-fmt"><code class="docutils literal notranslate"><span class="pre">DATETIME_FMT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="logs.html#log-fmt"><code class="docutils literal notranslate"><span class="pre">LOG_FMT</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html"><code class="docutils literal notranslate"><span class="pre">modules</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#fetch-module"><code class="docutils literal notranslate"><span class="pre">fetch_module</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objects.html"><code class="docutils literal notranslate"><span class="pre">objects</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objects.html#save-pickle"><code class="docutils literal notranslate"><span class="pre">save_pickle</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects.html#load-pickle"><code class="docutils literal notranslate"><span class="pre">load_pickle</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects.html#hash-file"><code class="docutils literal notranslate"><span class="pre">hash_file</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="paths.html"><code class="docutils literal notranslate"><span class="pre">paths</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="paths.html#get-parent-path"><code class="docutils literal notranslate"><span class="pre">get_parent_path</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="paths.html#list-all-paths"><code class="docutils literal notranslate"><span class="pre">list_all_paths</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="paths.html#build-all-paths"><code class="docutils literal notranslate"><span class="pre">build_all_paths</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="paths.html#build-top-paths"><code class="docutils literal notranslate"><span class="pre">build_top_paths</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="paths.html#get-all-attributes"><code class="docutils literal notranslate"><span class="pre">get_all_attributes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="processes.html"><code class="docutils literal notranslate"><span class="pre">processes</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="processes.html#run-process"><code class="docutils literal notranslate"><span class="pre">run_process</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -58,8 +111,8 @@
         <div class="sphinxsidebarwrapper">
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="configs.html"
-                          title="next chapter">Configs Module</a></p>
+    <p class="topless"><a href="colors.html"
+                          title="next chapter"><code class="docutils literal notranslate"><span class="pre">colors</span></code></a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -89,7 +142,7 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="configs.html" title="Configs Module"
+          <a href="colors.html" title="colors"
              >next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">pocketwelt 0.1.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><code class="docutils literal notranslate"><span class="pre">pocketwelt</span></code> documentation</a></li> 

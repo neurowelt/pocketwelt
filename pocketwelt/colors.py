@@ -42,7 +42,7 @@ class RGBColor(tuple, Enum):
 
 class click:
     """
-    This class was made to simulate [`click`](https://github.com/pallets/click)
+    This class was made to simulate `click` (see: https://github.com/pallets/click)
     package coloring functionality.
 
     My goal was to keep the package fully built-in, so if you do not have this

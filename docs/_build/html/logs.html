@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>logs &#8212; pocketwelt 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=def86cc0" />
+    
+    <script src="_static/documentation_options.js?v=01f34227"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="modules" href="modules.html" />
+    <link rel="prev" title="imports" href="imports.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modules.html" title="modules"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="imports.html" title="imports"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pocketwelt 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="docutils literal notranslate"><span class="pre">logs</span></code></a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="logs">
+<h1><code class="docutils literal notranslate"><span class="pre">logs</span></code><a class="headerlink" href="#logs" title="Link to this heading">¶</a></h1>
+<p>This module contains two classed designed for enhanced logging experience: <code class="docutils literal notranslate"><span class="pre">ColorFormatter</span></code> and <code class="docutils literal notranslate"><span class="pre">CustomLogger</span></code>.</p>
+<section id="colorformatter">
+<h2><code class="docutils literal notranslate"><span class="pre">ColorFormatter</span></code><a class="headerlink" href="#colorformatter" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pocketwelt.logs.ColorFormatter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pocketwelt.logs.</span></span><span class="sig-name descname"><span class="pre">ColorFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'%(asctime)s</span>&#160; <span class="pre">%(levelname)-8s</span> <span class="pre">%(filename)s:%(lineno)d</span> <span class="pre">&gt;&gt;</span>&#160; <span class="pre">%(message)s'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datefmt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'%Y-%m-%d</span> <span class="pre">%H:%M:%S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'%'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'{'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'$'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'%'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_colors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pocketwelt.logs.ColorFormatter" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Formatter</span></code></p>
+<p>Custom colored formatter converting logRecord to text.</p>
+<dl class="simple">
+<dt>Adapted from:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/encode/uvicorn/blob/master/uvicorn/logging.py">https://github.com/encode/uvicorn/blob/master/uvicorn/logging.py</a></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pocketwelt.logs.ColorFormatter.color_message">
+<span class="sig-name descname"><span class="pre">color_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#pocketwelt.logs.ColorFormatter.color_message" title="Link to this definition">¶</a></dt>
+<dd><p>Color the log message based on the log level.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>level_no</strong> (<em>int</em>) – The log level number.</p></li>
+<li><p><strong>msg</strong> (<em>str</em>) – The log message.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The colored log message.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pocketwelt.logs.ColorFormatter.format">
+<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">LogRecord</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#pocketwelt.logs.ColorFormatter.format" title="Link to this definition">¶</a></dt>
+<dd><p>Format the specified record.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>record</strong> (<em>logging.LogRecord</em>) – The log record to be formatted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The formatted log record as a string, possibly with color applied.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pocketwelt.logs.ColorFormatter.level_name_colors">
+<span class="sig-name descname"><span class="pre">level_name_colors</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{10:</span> <span class="pre">&lt;function</span> <span class="pre">ColorFormatter.&lt;lambda&gt;&gt;,</span> <span class="pre">20:</span> <span class="pre">&lt;function</span> <span class="pre">ColorFormatter.&lt;lambda&gt;&gt;,</span> <span class="pre">30:</span> <span class="pre">&lt;function</span> <span class="pre">ColorFormatter.&lt;lambda&gt;&gt;,</span> <span class="pre">40:</span> <span class="pre">&lt;function</span> <span class="pre">ColorFormatter.&lt;lambda&gt;&gt;,</span> <span class="pre">50:</span> <span class="pre">&lt;function</span> <span class="pre">ColorFormatter.&lt;lambda&gt;&gt;}</span></em><a class="headerlink" href="#pocketwelt.logs.ColorFormatter.level_name_colors" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="customlogger">
+<h2><code class="docutils literal notranslate"><span class="pre">CustomLogger</span></code><a class="headerlink" href="#customlogger" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pocketwelt.logs.CustomLogger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pocketwelt.logs.</span></span><span class="sig-name descname"><span class="pre">CustomLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formatter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Formatter</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_colors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fmt_kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pocketwelt.logs.CustomLogger" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Logger</span></code></p>
+<p>Custom Logger class accepting formatter objects and adding file logging option.</p>
+</dd></dl>
+
+</section>
+<section id="stdout-to-logger">
+<h2><code class="docutils literal notranslate"><span class="pre">stdout_to_logger</span></code><a class="headerlink" href="#stdout-to-logger" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pocketwelt.logs.stdout_to_logger">
+<span class="sig-prename descclassname"><span class="pre">pocketwelt.logs.</span></span><span class="sig-name descname"><span class="pre">stdout_to_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#pocketwelt.logs.stdout_to_logger" title="Link to this definition">¶</a></dt>
+<dd><p>Redirect stdout to a logger and execute a function. Method can be used when you
+are not sure were given <cite>print()</cite> statements are located in huge codebases, so
+you can wrap any method in this and force logs via your logging system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logger</strong> (<em>logging.Logger</em>) – Your own logger to use for logging the stdout output.</p></li>
+<li><p><strong>func</strong> (<em>Callable</em>) – The function to execute with stdout redirection.</p></li>
+<li><p><strong>*args</strong> – Variable length argument list to pass to the function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The return value of the executed function.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="datetime-fmt">
+<h2><code class="docutils literal notranslate"><span class="pre">DATETIME_FMT</span></code><a class="headerlink" href="#datetime-fmt" title="Link to this heading">¶</a></h2>
+<p>Default datetime format:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DATETIME_FMT</span> <span class="o">=</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="log-fmt">
+<h2><code class="docutils literal notranslate"><span class="pre">LOG_FMT</span></code><a class="headerlink" href="#log-fmt" title="Link to this heading">¶</a></h2>
+<p>Default logs format:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">LOG_FMT</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%(asctime)s</span><span class="s2">  </span><span class="si">%(levelname)-8s</span><span class="s2"> </span><span class="si">%(filename)s</span><span class="s2">:</span><span class="si">%(lineno)d</span><span class="s2"> &gt;&gt;  </span><span class="si">%(message)s</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">logs</span></code></a><ul>
+<li><a class="reference internal" href="#colorformatter"><code class="docutils literal notranslate"><span class="pre">ColorFormatter</span></code></a><ul>
+<li><a class="reference internal" href="#pocketwelt.logs.ColorFormatter"><code class="docutils literal notranslate"><span class="pre">ColorFormatter</span></code></a><ul>
+<li><a class="reference internal" href="#pocketwelt.logs.ColorFormatter.color_message"><code class="docutils literal notranslate"><span class="pre">ColorFormatter.color_message()</span></code></a></li>
+<li><a class="reference internal" href="#pocketwelt.logs.ColorFormatter.format"><code class="docutils literal notranslate"><span class="pre">ColorFormatter.format()</span></code></a></li>
+<li><a class="reference internal" href="#pocketwelt.logs.ColorFormatter.level_name_colors"><code class="docutils literal notranslate"><span class="pre">ColorFormatter.level_name_colors</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#customlogger"><code class="docutils literal notranslate"><span class="pre">CustomLogger</span></code></a><ul>
+<li><a class="reference internal" href="#pocketwelt.logs.CustomLogger"><code class="docutils literal notranslate"><span class="pre">CustomLogger</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#stdout-to-logger"><code class="docutils literal notranslate"><span class="pre">stdout_to_logger</span></code></a><ul>
+<li><a class="reference internal" href="#pocketwelt.logs.stdout_to_logger"><code class="docutils literal notranslate"><span class="pre">stdout_to_logger()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#datetime-fmt"><code class="docutils literal notranslate"><span class="pre">DATETIME_FMT</span></code></a></li>
+<li><a class="reference internal" href="#log-fmt"><code class="docutils literal notranslate"><span class="pre">LOG_FMT</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="imports.html"
+                          title="previous chapter"><code class="docutils literal notranslate"><span class="pre">imports</span></code></a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="modules.html"
+                          title="next chapter"><code class="docutils literal notranslate"><span class="pre">modules</span></code></a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/logs.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modules.html" title="modules"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="imports.html" title="imports"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pocketwelt 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="docutils literal notranslate"><span class="pre">logs</span></code></a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024, neurowelt.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    </div>
+  </body>
+</html>

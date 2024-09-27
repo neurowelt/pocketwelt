@@ -27,7 +27,7 @@ class ColorFormatter(logging.Formatter):
     Custom colored formatter converting logRecord to text.
 
     Adapted from:
-    * https://github.com/encode/uvicorn/blob/master/uvicorn/logging.py
+        * https://github.com/encode/uvicorn/blob/master/uvicorn/logging.py
     """
 
     level_name_colors = {
