@@ -23,8 +23,8 @@ class LazyModule(ModuleType):
     Module for lazy importing.
 
     Heavily based on:
-    * https://github.com/optuna/optuna/blob/master/optuna/integration/__init__.py
-    * https://github.com/huggingface/diffusers/blob/main/src/diffusers/utils/import_utils.py
+        * https://github.com/optuna/optuna/blob/master/optuna/integration/__init__.py
+        * https://github.com/huggingface/diffusers/blob/main/src/diffusers/utils/import_utils.py
     """
 
     def __init__(
