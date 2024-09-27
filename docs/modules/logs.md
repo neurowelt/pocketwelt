@@ -26,6 +26,12 @@ This module contains two classed designed for enhanced logging experience: `Colo
 .. autofunction:: pocketwelt.logs.stdout_to_logger
 ```
 
+## `getCustomLogger`
+
+```{eval-rst}
+.. autofunction:: pocketwelt.logs.getCustomLogger
+```
+
 ## `DATETIME_FMT`
 
 Default datetime format:

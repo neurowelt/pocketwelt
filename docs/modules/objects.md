@@ -2,6 +2,9 @@
 
 This module contains methods for `pickle` operations and file hashing.
 
+> [!WARNING]
+> `save_pickle` will work only on [`picklable`](https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled) objects
+
 ## `save_pickle`
 
 ```{eval-rst}
