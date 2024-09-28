@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pocketwelt"
-version = "0.1.0"
+version = "0.1.1"
 description = "Python powertool in your pocket"
 authors = ["neurowelt <neurowelt.dev@gmail.com>"]
 license = "MIT"
@@ -30,14 +30,6 @@ optional = true
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.3"
-
-[tool.poetry.group.docs]
-optional = true
-
-[tool.poetry.group.docs.dependencies]
-sphinx = "7.4.7"
-myst-parser = "4.0.0"
-pydata-sphinx-theme = "0.15.4"
 
 [build-system]
 requires = ["poetry-core"]
