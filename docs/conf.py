@@ -21,7 +21,9 @@ release = "0.1.0"
 extensions = ["myst_parser", "sphinx.ext.autodoc", "sphinx.ext.napoleon"]
 
 templates_path = ["_templates"]
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
+exclude_patterns = [
+    "_build", "Thumbs.db", ".DS_Store", "README.md", "requirements.txt"
+]
 
 source_suffix = {
     ".rst": "restructuredtext",
@@ -35,3 +37,13 @@ source_suffix = {
 html_theme = "pydata_sphinx_theme"
 html_static_path = ["_static"]
 html_favicon = "_static/flux-wizard-cane.png"
+html_theme_options = {
+    "icon_links": [
+        {
+            "name": "GitHub",
+            "url": "https://github.com/neurowelt/pocketwelt",
+            "icon": "fab fa-github-square",
+            "type": "fontawesome",
+        }
+   ]
+}
