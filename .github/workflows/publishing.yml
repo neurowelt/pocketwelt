@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install poetry==1.6.1
-          python -m poetry install --sync --no-interaction
+          python -m poetry install --sync --no-interaction --without=dev,docs
       - name: Build package
         run: python -m poetry build
       - name: Publish package
