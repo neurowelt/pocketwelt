@@ -2,6 +2,8 @@ name: Deploy package documentation
 
 on:
   push:
+    branches:
+      - docs-deploy  # to have more freedom in doc modificatiosn
     tags:
       - "v[0-9]+.[0-9]+.[0-9]+"
 
