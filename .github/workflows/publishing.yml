@@ -2,6 +2,8 @@ name: Deploy package documentation
 
 on:
   push:
+    branches:
+      - test-pypi
     tags:
       - "v[0-9]+.[0-9]+.[0-9]+"
 
