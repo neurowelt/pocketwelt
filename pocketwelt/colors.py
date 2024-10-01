@@ -68,11 +68,12 @@ class click:
         """
         bits: List[str] = [text]
         if isinstance(fg, int):
-            bits.insert(0, f"{38};5;{fg:d}")
+            _color = f"{38};5;{fg:d}"
         elif isinstance(fg, (tuple, list)):
             r, g, b = fg
-            bits.insert(0, f"{38};2;{r:d};{g:d};{b:d}")
+            _color = f"{38};2;{r:d};{g:d};{b:d}"
         else:
-            bits.insert(0, str(_ANSI_COLORS[fg]))
+            _color = str(_ANSI_COLORS[fg])
+        bits.insert(0, f"\033[{_color}m")
 
         return "".join(bits)
