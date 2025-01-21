@@ -1,4 +1,4 @@
-name: Deploy package documentation
+name: Deploy package to PyPi
 
 on:
   push:
