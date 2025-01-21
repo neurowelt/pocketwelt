@@ -12,7 +12,7 @@ try:
     import click
 except ImportError:
     print(
-        "Package called `click` has not been found."
+        "Package called `click` has not been found. "
         "Importing replacement class from `pocketwelt.colors`"
     )
     from pocketwelt.colors import click
@@ -213,7 +213,7 @@ def getCustomLogger(
         is intact and we get our colorful logs this way.
     """
     logging.Logger.manager.setLoggerClass(CustomLogger)
-    _logger = logging.Logger.manager.getLogger(name)
+    _logger = logging.Logger.manager.getLogger(name)  # handles retrieving existing logger
     _logger.setLevel(level)
     logging.Logger.manager.setLoggerClass(logging.Logger)
 

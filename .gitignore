@@ -2,6 +2,9 @@
 dist/*
 docs/_build/*
 
+# Debug
+debug/*
+
 # Python
 __pycache__/*
 *.py[cod]

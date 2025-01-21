@@ -75,5 +75,6 @@ class click:
         else:
             _color = str(_ANSI_COLORS[fg])
         bits.insert(0, f"\033[{_color}m")
+        bits.append("\033[0m")  # ANSI reset all, to stop color from being applied to all following logs
 
         return "".join(bits)
