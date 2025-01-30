@@ -121,6 +121,9 @@ class CustomLogger(logging.Logger):
         """
         super().__init__(name, level)
 
+        # Stop propagating logs to parent logger
+        self.propagate = False
+
         # Prepare formatter
         formatter = formatter or ColorFormatter(
             use_colors=use_colors,
