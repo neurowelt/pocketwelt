@@ -4,13 +4,14 @@ from typing import Optional
 from pocketwelt.processes import run_process
 
 
-def fetch_module(package: str, alias: Optional[str] = None) -> None:
+def fetch_module(package: str, alias: Optional[str] = None, skip_install: bool = True) -> None:
     """
     Try importing a package and install it if it's not available.
 
     Args:
         package (str): Name of the package to import and potentially install.
         alias (str): Alias for module used in code (e.g. `np` is an alias for `numpy`).
+        skip_install (bool): If `True`, skip the installation of the package. Defaults to `True`.
 
     Raises:
         ImportError: If the package cannot be imported after installation attempt.
@@ -26,6 +27,9 @@ def fetch_module(package: str, alias: Optional[str] = None) -> None:
     try:
         importlib.import_module(package)
     except (ImportError, ModuleNotFoundError):
-        run_process(f"python -m pip install {package}")
+        if not skip_install:
+            run_process(f"python -m pip install {package}")
+        else:
+            raise ImportError(f"Package {package} is not installed!")
     finally:
         globals()[alias or package] = importlib.import_module(package)
