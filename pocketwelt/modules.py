@@ -20,7 +20,7 @@ def fetch_module(package: str, alias: Optional[str] = None, skip_install: bool =
         This function modifies the global namespace by adding the imported module.
 
     Example:
-        >>> fetch_module('numpy')
+        >>> fetch_module('numpy', skip_install=False)
         # If numpy is not installed, it will be installed and then imported.
         # If numpy is already installed, it will just be imported.
     """
