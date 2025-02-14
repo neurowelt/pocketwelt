@@ -11,7 +11,9 @@ __all__ = [
     "fetch_module",
     "getCustomLogger",
     "hash_file",
+    "load_json",
     "load_pickle",
+    "save_json",
     "save_pickle",
     "get_parent_path",
     "run_process",
@@ -31,7 +33,7 @@ _import_structure = {
     "files": ["compress_file", "decompress_file"],
     "logs": ["getCustomLogger", "stdout_to_logger", "CustomLogger", "ColorFormatter"],
     "modules": ["fetch_module"],
-    "objects": ["hash_file", "load_pickle", "save_pickle"],
+    "objects": ["hash_file", "load_pickle", "save_pickle", "load_json", "save_json"],
     "paths": [
         "get_parent_path",
         "build_all_paths",
@@ -54,7 +56,13 @@ if TYPE_CHECKING:
         ColorFormatter,
     )
     from pocketwelt.modules import fetch_module
-    from pocketwelt.objects import hash_file, load_pickle, save_pickle
+    from pocketwelt.objects import (
+        hash_file,
+        load_pickle,
+        save_pickle,
+        load_json,
+        save_json,
+    )
     from pocketwelt.paths import (
         build_all_paths,
         build_top_paths,
