@@ -16,6 +16,7 @@ __all__ = [
     "save_json",
     "save_pickle",
     "get_parent_path",
+    "replace_parents",
     "run_process",
     "build_all_paths",
     "build_top_paths",
@@ -28,6 +29,7 @@ __all__ = [
 ]
 
 _import_structure = {
+    "classes": ["replace_parents"],
     "configs": ["BaseConfig"],
     "encodings": ["b64_decode", "b64_encode"],
     "files": ["compress_file", "decompress_file"],
@@ -46,6 +48,7 @@ _import_structure = {
 
 
 if TYPE_CHECKING:
+    from pocketwelt.classes import replace_parents
     from pocketwelt.configs import BaseConfig
     from pocketwelt.encodings import b64_decode, b64_encode
     from pocketwelt.files import compress_file, decompress_file
