@@ -6,7 +6,7 @@ from datetime import datetime
 from io import StringIO
 from typing import Any, Callable, Literal, Optional, Union
 
-from pocketwelt.colors import RGBColor
+from pocketwelt.colors import _ANSI_COLORS
 
 try:
     import click
@@ -31,11 +31,11 @@ class ColorFormatter(logging.Formatter):
     """
 
     level_name_colors = {
-        logging.DEBUG: lambda msg: click.style(str(msg), fg=RGBColor.TEAL),
-        logging.INFO: lambda msg: click.style(str(msg), fg=RGBColor.GREEN),
-        logging.WARNING: lambda msg: click.style(str(msg), fg=RGBColor.YELLOW),
-        logging.ERROR: lambda msg: click.style(str(msg), fg=RGBColor.CRIMSON),
-        logging.CRITICAL: lambda msg: click.style(str(msg), fg=RGBColor.RED),
+        logging.DEBUG: lambda msg: click.style(str(msg), fg=_ANSI_COLORS["cyan"]),
+        logging.INFO: lambda msg: click.style(str(msg), fg=_ANSI_COLORS["green"]),
+        logging.WARNING: lambda msg: click.style(str(msg), fg=_ANSI_COLORS["yellow"]),
+        logging.ERROR: lambda msg: click.style(str(msg), fg=_ANSI_COLORS["red"]),
+        logging.CRITICAL: lambda msg: click.style(str(msg), fg=_ANSI_COLORS["bright_red"]),
     }
 
     def __init__(
@@ -69,7 +69,7 @@ class ColorFormatter(logging.Formatter):
             str: The colored log message.
         """
         coloring_func = self.level_name_colors.get(
-            level_no, lambda msg: click.style(str(msg), fg=RGBColor.GREEN)
+            level_no, lambda msg: click.style(str(msg), fg=_ANSI_COLORS["green"])
         )
 
         return coloring_func(msg)
