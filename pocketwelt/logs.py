@@ -31,11 +31,11 @@ class ColorFormatter(logging.Formatter):
     """
 
     level_name_colors = {
-        logging.DEBUG: lambda msg: click.style(str(msg), fg=_ANSI_COLORS["cyan"]),
-        logging.INFO: lambda msg: click.style(str(msg), fg=_ANSI_COLORS["green"]),
-        logging.WARNING: lambda msg: click.style(str(msg), fg=_ANSI_COLORS["yellow"]),
-        logging.ERROR: lambda msg: click.style(str(msg), fg=_ANSI_COLORS["red"]),
-        logging.CRITICAL: lambda msg: click.style(str(msg), fg=_ANSI_COLORS["bright_red"]),
+        logging.DEBUG: lambda msg: click.style(str(msg), fg="cyan"),
+        logging.INFO: lambda msg: click.style(str(msg), fg="green"),
+        logging.WARNING: lambda msg: click.style(str(msg), fg="yellow"),
+        logging.ERROR: lambda msg: click.style(str(msg), fg="red"),
+        logging.CRITICAL: lambda msg: click.style(str(msg), fg="bright_red"),
     }
 
     def __init__(
